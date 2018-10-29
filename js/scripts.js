@@ -27,10 +27,10 @@ function List(name) {
   this.name = name;
   incrementID();
   this.instantiate($(".lists"));
+  taskLists.push(this);
 }
 
 List.prototype.addTask = function(task) {
-  debugger;
   var myTask = new Task(task, this.taskID)
   this.list.push(myTask);
   this.taskID++;
@@ -42,41 +42,33 @@ List.prototype.instantiate = function(selector) {
   theBasics += "<form id='form" + this.pid + "' class='list-form'><div class='form-group'><label>Enter New Task:<input class='form-control' id='input" + this.pid + "'></label></div><button type=submit>Submit</button>";
   theBasics += "</div>";
   selector.append(theBasics);
+  attachSubmitListener(this.pid);
 }
 
 List.prototype.update = function(task, selector) {
   selector.append(task.writeTask());
 }
 
-function attachSubmitListeners() {
-  $(".list").on("submit", "form", function(event) {
+function attachSubmitListener(id) {
+  $(".list").on("submit", "#form" + id, function(event) {
     event.preventDefault();
     var id = parseInt(this.id.slice(4));
     var input = $("#input" + id).val();
-    debugger;
     taskLists.forEach(function(list) {
       if(list.pid === id) {
         list.addTask(input);
       }
     });
-    debugger;
   })
 }
 
-// List.prototype.writeList = function() {
-//   var output = "";
-//   this.list.forEach(function(task) {
-//     output += task.writeTask();
-//   })
-//   return output;
-// }
-
-function write() {
-
-}
 
 $(function() {
+  $("#newList").submit(function(event){
+    event.preventDefault();
+    var tempListName = $("#newListInput").val();
+    var tempList = new List(tempListName);
+  });
+
   var basicList = new List("Default");
-  taskLists.push(basicList);
-  attachSubmitListeners();
 });
