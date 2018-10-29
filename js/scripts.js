@@ -51,7 +51,7 @@ List.prototype.update = function(task, selector) {
 }
 
 function attachCompleteListener(id) {
-  $("#list" + id).on("click", "li", function(){
+  $("#list" + id).on("click", "li", function() {
     this.classList.toggle("complete");
   });
 }
@@ -62,7 +62,7 @@ function attachSubmitListener(id) {
     var id = parseInt(this.id.slice(4));
     var input = $("#input" + id).val();
     taskLists.forEach(function(list) {
-      if(list.pid === id) {
+      if (list.pid === id) {
         list.addTask(input);
       }
     });
@@ -70,7 +70,7 @@ function attachSubmitListener(id) {
 }
 
 $(function() {
-  $("#newList").submit(function(event){
+  $("#newList").submit(function(event) {
     event.preventDefault();
     var tempListName = $("#newListInput").val();
     var tempList = new List(tempListName);
