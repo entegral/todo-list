@@ -1,0 +1,10 @@
+.list {
+  float: left;
+  border: solid black 2px;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.complete {
+  text-decoration: line-through;
+}
