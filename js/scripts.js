@@ -66,17 +66,14 @@ function attachSubmitListener(id) {
         list.addTask(input);
       }
     });
-  })
+  });
 }
 
-
 $(function() {
-
   $("#newList").submit(function(event){
     event.preventDefault();
     var tempListName = $("#newListInput").val();
     var tempList = new List(tempListName);
   });
-
   var basicList = new List("Default");
 });
