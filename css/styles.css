@@ -7,6 +7,16 @@
   background-color: #ffe;
 }
 
+.incomplete:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
 .complete {
   text-decoration: line-through;
+}
+
+.complete:hover {
+  text-decoration: line-through;
+  color: black;
 }
