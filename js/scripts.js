@@ -1,10 +1,10 @@
 var listID = 0;
 var taskLists = [];
 
-function Task(task, pid) {
+function Task(task, taskID, listID) {
   this.complete = "incomplete";
   this.toDo = task;
-  this.pid = pid;
+  this.pid = listID.toString() + "-" + taskID.toString();
 }
 
 Task.prototype.complete = function() {
@@ -31,7 +31,7 @@ function List(name) {
 }
 
 List.prototype.addTask = function(task) {
-  var myTask = new Task(task, this.taskID)
+  var myTask = new Task(task, this.taskID, this.pid)
   this.list.push(myTask);
   this.taskID++;
   this.update(myTask, $("#list" + this.pid));
@@ -43,10 +43,17 @@ List.prototype.instantiate = function(selector) {
   theBasics += "</div>";
   selector.append(theBasics);
   attachSubmitListener(this.pid);
+  attachCompleteListener(this.pid);
 }
 
 List.prototype.update = function(task, selector) {
   selector.append(task.writeTask());
+}
+
+function attachCompleteListener(id) {
+  $("#list" + id).on("click", "li", function(){
+    this.classList.toggle("complete");
+  });
 }
 
 function attachSubmitListener(id) {
@@ -64,6 +71,7 @@ function attachSubmitListener(id) {
 
 
 $(function() {
+
   $("#newList").submit(function(event){
     event.preventDefault();
     var tempListName = $("#newListInput").val();
