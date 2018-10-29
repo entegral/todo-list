@@ -15,21 +15,25 @@ _Create and manage your to-do list._
 
 ## Specifications
 
-- [ ] Display a To-Do Object
+- [x] Display a To-Do Object
     * Input: "Take out the trash"
     * Output: A line item with an indicator as to completion status
 
-- [ ] Display list of related To-Do Objects
+- [x] Display list of related To-Do Objects
     * Input: [ToDo1, ToDo2, ToDo3]
     * Output: A unordered list of objects
 
-- [ ] Alter completed status of each line-item
+- [x] Alter completed status of each line-item
     * Input: Click on line-item
     * Output: Strikethrough text to indicate "complete"
 
-- [ ] Dynamically alter list based on user Input
+- [x] Dynamically alter list based on user Input
     * Input: User -> "Walk the dog"
     * Output: Add line item as "incomplete" to existing list
+
+- [x] Permit user to create additional lists
+    * Input: Name of new list "Groceries"
+    * Output: New fully interactive list with name Groceries
 
 ## Technologies Used
 _GitHub, HTML, CSS, Bootstrap, Javascript, JQuery_
